@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bara — letusan gunung api Indonesia sejak 1500</title>
+    <meta
+      name="description"
+      content="Semua letusan gunung api Indonesia yang tercatat sejak 1500, dari Aceh sampai Halmahera. Cari gunung api terdekat dari kabupaten/kotamu, lihat riwayat tiap gunung, dan pahami skala VEI."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bara-id.vercel.app/" />
+    <meta property="og:title" content="Bara — letusan gunung api Indonesia sejak 1500" />
+    <meta property="og:description" content="1.273 letusan dari 73 gunung api. Cari gunung api terdekat dari kabupaten/kotamu." />
+    <meta property="og:image" content="https://bara-id.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://bara-id.vercel.app/" />
+    <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#171513" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/ikon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="kepala">
+      <a class="merek" href="/">
+        <svg viewBox="0 0 32 24" aria-hidden="true"><path d="M1 23 12 6l3 4 3-5 13 18Z" fill="currentColor" /><circle cx="15" cy="3" r="1.6" class="bara-titik" /></svg>
+        Bara
+      </a>
+      <nav><a href="#sekitar">Daerahmu</a><a href="#peta">Peta</a><a href="#vei">Skala VEI</a><a href="#tentang">Tentang data</a></nav>
+    </header>
+
+    <main>
+      <section class="pembuka" aria-labelledby="judul">
+        <p class="label">Letusan gunung api Indonesia · <span data-rentang>1500–2026</span></p>
+        <h1 id="judul">Sejak 1500, gunung api Indonesia meletus <em data-total>1.273</em> kali.</h1>
+        <p class="lead">
+          Itu letusan yang tercatat pasti dari <span data-jumlah-gunung>73</span> gunung. Setiap baris di bawah ini satu gunung,
+          berurutan menyusuri busur vulkanik dari Aceh sampai Halmahera. Setiap titik satu letusan; makin besar, makin dahsyat.
+        </p>
+        <p class="kini" data-kini></p>
+        <div class="garis-waktu-bingkai">
+          <div class="legenda-ukuran" aria-hidden="true" data-legenda-ukuran></div>
+          <div class="garis-waktu" id="garis-waktu" role="img" aria-label="Garis waktu letusan gunung api Indonesia sejak 1500, satu baris per gunung, ukuran titik sesuai VEI."></div>
+        </div>
+      </section>
+
+      <section class="bagian" id="sekitar" aria-labelledby="judul-sekitar">
+        <p class="label">Di sekitar daerahmu</p>
+        <h2 id="judul-sekitar">Seberapa dekat kamu dengan <em>gunung api?</em></h2>
+        <form class="cari" id="cari" autocomplete="off">
+          <div class="combo">
+            <label for="daerah" class="sr-only">Kabupaten atau kota</label>
+            <input id="daerah" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="saran" placeholder="Ketik kabupaten atau kota, misalnya Sleman" spellcheck="false" />
+            <ul id="saran" role="listbox" class="saran" hidden></ul>
+          </div>
+          <div class="pilihan" role="group" aria-label="Radius">
+            <button type="button" data-radius="50" aria-pressed="false">50 km</button>
+            <button type="button" data-radius="100" aria-pressed="true">100 km</button>
+            <button type="button" data-radius="200" aria-pressed="false">200 km</button>
+          </div>
+        </form>
+
+        <div class="hasil-sekitar" aria-live="polite">
+          <h3 class="nama-daerah" data-nama-daerah></h3>
+          <p class="kalimat" data-kalimat></p>
+          <ul class="ubin" data-ubin></ul>
+          <div class="sekitar-grid">
+            <div class="peta-kecil" id="peta-kecil"></div>
+            <div>
+              <h4 class="label" data-judul-daftar>Gunung api dalam radius ini</h4>
+              <ol class="daftar-gunung" data-daftar></ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bagian" id="peta" aria-labelledby="judul-peta">
+        <p class="label">101 gunung api Holosen</p>
+        <h2 id="judul-peta">Dari Aceh sampai <em>Halmahera</em></h2>
+        <p class="pengantar">
+          Gunung api Indonesia berjajar di atas zona tempat lempeng samudra menunjam ke bawah lempeng lain. Warnanya menunjukkan
+          kapan terakhir meletus, ukurannya seberapa sering sejak 1500. Ketuk sebuah gunung untuk melihat riwayatnya.
+        </p>
+        <ul class="legenda" aria-label="Letusan terakhir" data-legenda-kelas></ul>
+        <div class="peta-besar" id="peta-besar" role="img" aria-label="Peta 101 gunung api Holosen Indonesia, diwarnai menurut letusan terakhir"></div>
+
+        <div class="kartu-gunung" aria-live="polite">
+          <div class="kartu-kepala">
+            <label for="pilih-gunung" class="label">Gunung</label>
+            <select id="pilih-gunung"></select>
+          </div>
+          <div data-kartu></div>
+        </div>
+      </section>
+
+      <section class="bagian" id="vei" aria-labelledby="judul-vei">
+        <p class="label">Volcanic Explosivity Index</p>
+        <h2 id="judul-vei">Makin dahsyat, makin <em>jarang</em></h2>
+        <p class="pengantar">
+          VEI mengukur besar letusan dari volume material yang dimuntahkan. Mulai VEI 2, tiap naik satu angka volumenya sepuluh
+          kali lipat. Jadi VEI 7 sekitar seratus ribu kali VEI 2.
+        </p>
+        <div class="tabel-vei-bungkus">
+          <table class="tabel-vei">
+            <thead>
+              <tr><th scope="col">VEI</th><th scope="col">Volume material</th><th scope="col">Letusan sejak 1500</th><th scope="col">Contoh terbaru</th></tr>
+            </thead>
+            <tbody data-vei></tbody>
+          </table>
+        </div>
+        <p class="catatan-kecil">Panjang batang memakai skala logaritmik supaya VEI 6 dan 7, yang masing-masing hanya sekali, tetap terlihat.</p>
+      </section>
+
+      <section class="bagian" aria-labelledby="judul-raksasa">
+        <p class="label">Tiga raksasa</p>
+        <h2 id="judul-raksasa">Letusan yang <em>mengubah dunia</em></h2>
+        <div class="raksasa">
+          <article>
+            <p class="angka-besar">1257</p>
+            <h3>Samalas, Lombok</h3>
+            <p class="ket-vei">VEI 7</p>
+            <p>
+              Lapisan es di Greenland dan Antarktika menyimpan jejak sulfat raksasa dari sekitar 1257, tetapi sumbernya baru
+              dipastikan pada 2013: Gunung Samalas, tetangga Rinjani. Kalderanya kini berisi Danau Segara Anak. Babad Lombok
+              mencatat hancurnya Pamatan, yang diduga pusat kerajaan saat itu.
+            </p>
+          </article>
+          <article>
+            <p class="angka-besar">1815</p>
+            <h3>Tambora, Sumbawa</h3>
+            <p class="ket-vei">VEI 7</p>
+            <p>
+              Letusan terbesar dalam sejarah tertulis. Aktivitasnya mulai 1812 dan memuncak 10–11 April 1815. Puluhan ribu orang
+              di Sumbawa dan Lombok meninggal, sebagian besar karena kelaparan sesudahnya. Sulfatnya mendinginkan iklim dunia, dan
+              1816 dikenang sebagai "tahun tanpa musim panas" di Eropa dan Amerika Utara.
+            </p>
+          </article>
+          <article>
+            <p class="angka-besar">1883</p>
+            <h3>Krakatau, Selat Sunda</h3>
+            <p class="ket-vei">VEI 6</p>
+            <p>
+              Memuncak 26–27 Agustus 1883. Tsunaminya menyapu pesisir Banten dan Lampung dan menewaskan lebih dari 36 ribu orang.
+              Dentumannya terdengar sampai Pulau Rodrigues di Samudra Hindia, hampir 4.800 km jauhnya. Anak Krakatau muncul dari
+              kalderanya pada 1927, lalu longsor pada Desember 2018 dan memicu tsunami Selat Sunda.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="bagian" aria-labelledby="judul-aktif">
+        <p class="label">Sejak 1500</p>
+        <h2 id="judul-aktif">Yang paling <em>sering</em> meletus</h2>
+        <p class="pengantar">
+          Catatan lama lebih lengkap untuk gunung yang dekat permukiman dan pos pengamatan, jadi gunung terpencil bisa saja
+          tercatat lebih jarang daripada kenyataannya.
+        </p>
+        <div class="grafik" id="grafik-aktif" role="img"></div>
+      </section>
+
+      <section class="bagian tentang" id="tentang" aria-labelledby="judul-tentang">
+        <h2 id="judul-tentang">Tentang data</h2>
+        <ul>
+          <li>
+            Gunung api dan letusan: <a href="https://volcano.si.edu/">Global Volcanism Program, Smithsonian Institution</a>,
+            basis data <i>Volcanoes of the World</i>, diunduh <span data-dibangun>…</span>. Hanya letusan berstatus pasti
+            (<i>confirmed</i>) yang dihitung. Tanggal yang dipakai adalah awal letusan, bukan puncaknya.
+          </li>
+          <li>
+            GVP mencatat 101 gunung api Holosen (aktif dalam ±12 ribu tahun terakhir) di Indonesia. Angka resmi PVMBG, 127 gunung
+            api aktif, lebih besar karena cara menghitungnya berbeda: lapangan solfatara dan fumarol ikut dihitung, dan beberapa
+            kerucut yang di GVP digabung menjadi satu kompleks dihitung sendiri-sendiri.
+          </li>
+          <li>
+            VEI bertanda "perkiraan" adalah taksiran kasar GVP, umumnya untuk letusan lama. Catatan sebelum abad ke-19 jauh dari
+            lengkap.
+          </li>
+          <li>
+            Letak kabupaten/kota ditentukan dari koordinat puncak menurut GVP (batas wilayah geoBoundaries: BPS, WFP, OCHA ROAP,
+            CC BY 3.0 IGO). Gunung di perbatasan bisa saja masuk kabupaten tetangga. Jarak diukur dari titik tengah wilayah, bukan
+            dari rumahmu.
+          </li>
+          <li>
+            Ini catatan sejarah, <strong>bukan status kegunungapian</strong>. Untuk status, rekomendasi, dan peringatan terkini,
+            rujukan resminya <a href="https://magma.esdm.go.id/">MAGMA Indonesia (PVMBG)</a>.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="kaki">
+      <p>Dibuat oleh Rafi Fernandito · <a href="https://github.com/Reverseflash45/bara">kode sumber</a></p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
