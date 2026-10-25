@@ -1,6 +1,7 @@
-import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
-import "@fontsource-variable/hanken-grotesk";
+import "@fontsource/big-shoulders-display/700";
+import "@fontsource/big-shoulders-display/900";
+import "@fontsource/public-sans/400.css";
+import "@fontsource/public-sans/600.css";
 import "./gaya.css";
 import {
   DAERAH,

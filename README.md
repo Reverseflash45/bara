@@ -20,7 +20,7 @@ Program.
 - **Skala VEI** dengan jumlah letusan dan contoh terbaru di tiap tingkat, tiga letusan
   raksasa (Samalas 1257, Tambora 1815, Krakatau 1883), dan gunung yang paling sering
   meletus.
-- Mode gelap mengikuti sistem.
+- Tampilan basal dan magma: latar batuan gelap, letusan menyala seperti bara.
 
 ## Data
 
@@ -50,10 +50,10 @@ dengan [Getar](https://github.com/Reverseflash45/getar) dan
 
 ## Warna
 
-Kapan terakhir meletus memakai skala urut satu rona lava (sejak 2000, 1900–1999,
-1500–1899), divalidasi terhadap latar terang dan gelap; yang tidak meletus sejak 1500
-digambar sebagai segitiga berongga. Di mode terang yang paling baru paling gelap, di mode
-gelap paling terang.
+Kapan terakhir meletus memakai skala urut satu rona bara (sejak 2000 #ffc069,
+1900–1999 #f26a2e, 1500–1899 #a8401f): makin baru makin menyala. Divalidasi ordinal
+terhadap warna darat peta #33302d. Yang tidak meletus sejak 1500 digambar sebagai
+segitiga berongga.
 
 ## Menjalankan
 

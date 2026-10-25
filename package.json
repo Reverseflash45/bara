@@ -11,8 +11,8 @@
     "data": "node data/skrip/bangun.mjs --unduh"
   },
   "dependencies": {
-    "@fontsource-variable/hanken-grotesk": "^5.3.0",
-    "@fontsource/instrument-serif": "^5.3.0",
+    "@fontsource/big-shoulders-display": "^5.3.0",
+    "@fontsource/public-sans": "^5.3.0",
     "d3-geo": "^3.1.1",
     "d3-scale": "^4.0.2",
     "topojson-client": "^3.1.0"
