@@ -2,7 +2,7 @@
 
 ![Bara: sejak 1500, gunung api Indonesia meletus 1.273 kali](public/og.png)
 
-**[Buka Bara](https://bara-id.vercel.app)**
+**[Buka Bara](https://bara.raffstw.my.id)**
 
 Semua letusan gunung api Indonesia yang tercatat pasti sejak 1500, dari Aceh sampai
 Halmahera, dari basis data *Volcanoes of the World* milik Smithsonian Global Volcanism
