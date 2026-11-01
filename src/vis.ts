@@ -1,5 +1,6 @@
 import type { Feature, FeatureCollection, Geometry, MultiLineString } from "geojson";
 import { geoCircle, geoMercator, geoPath } from "d3-geo";
+import { jalurDatar, titikSudut } from "./datar";
 import { scaleLinear } from "d3-scale";
 import { feature, mesh } from "topojson-client";
 import type { GeometryCollection, Topology } from "topojson-specification";
@@ -241,12 +242,12 @@ export function gambarPetaBesar(wadah: HTMLElement, peta: Peta, terpilih: number
     ],
   };
   // Dipaskan ke lebar dulu, lalu tingginya mengikuti bentuk kepulauan supaya tidak ada ruang kosong.
-  const proyeksi = geoMercator().fitWidth(lebar - 2 * tepi, semua);
-  const [[x0, y0], [, y1]] = geoPath(proyeksi).bounds(semua);
+  const proyeksi = geoMercator().fitWidth(lebar - 2 * tepi, titikSudut(semua));
+  const [[x0, y0], [, y1]] = jalurDatar(proyeksi).bounds(semua);
   const [tx, ty] = proyeksi.translate();
   proyeksi.translate([tx - x0 + tepi, ty - y0 + tepi]);
   const tinggi = Math.ceil(y1 - y0 + 2 * tepi);
-  const jalur = geoPath(proyeksi);
+  const jalur = jalurDatar(proyeksi);
   const pos = GUNUNG.map((g) => proyeksi([g.lon, g.lat]) as [number, number]);
   // Gunung besar digambar dulu supaya yang kecil tetap terlihat di atasnya.
   const urut = [...GUNUNG].sort((a, b) => ukuranSegitiga(b) - ukuranSegitiga(a));
