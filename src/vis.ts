@@ -24,7 +24,8 @@ import {
 
 /* ---------- umum ---------- */
 export const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
-export const angka = (n: number) => n.toLocaleString("id-ID");
+/** Pemisah ribuan id-ID tanpa Intl: membangun formatter ICU pertama kali memakan puluhan ms di HP. */
+export const angka = (n: number) => (Number.isInteger(n) ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : n.toLocaleString("id-ID"));
 const TAHUN_AKHIR = new Date().getUTCFullYear() + 1;
 /** Tanggal pembaruan data GVP sebagai tahun pecahan: ujung garis letusan yang masih berlangsung. */
 const [thM, blnM] = MUTAKHIR.split("-").map(Number);

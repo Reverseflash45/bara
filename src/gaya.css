@@ -927,3 +927,13 @@ main,
     height: 574px;
   }
 }
+
+/* pesan tempat peta sebelum digambar (vis.ts): peta kecil lebar × 0,92 sampai 420 × 0,92; peta besar ± lebar × 0,4 */
+.peta-kecil:empty {
+  width: 100%;
+  aspect-ratio: 1 / 0.92;
+  max-height: 386px;
+}
+.peta-besar:empty {
+  aspect-ratio: 1 / 0.4;
+}

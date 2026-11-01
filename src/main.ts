@@ -323,12 +323,31 @@ isiPilihan();
 gambarLegenda();
 gambarVei();
 gambarSemua();
-muatPeta()
-  .then((p) => {
-    peta = p;
-    gambarSekitar();
-    gambarPeta();
-  })
-  .catch(() => {
-    $("#peta-besar").innerHTML = `<p class="gagal">Peta gagal dimuat. Muat ulang halaman.</p>`;
-  });
+
+// Dua peta ada di bawah garis waktu; petanya baru diunduh dan digambar saat bagiannya hampir terlihat,
+// supaya pembukaan halaman tidak macet. Jarak 250 px: lebih besar dari itu, di HP peta tetap langsung tergambar.
+function saatHampirTerlihat(el: Element, kerja: () => void) {
+  if (!("IntersectionObserver" in window)) return kerja();
+  const io = new IntersectionObserver(
+    (isi) => {
+      if (!isi.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      kerja();
+    },
+    { rootMargin: "250px 0px" },
+  );
+  io.observe(el);
+}
+
+let janjiPeta: Promise<void> | null = null;
+const siapkanPeta = () =>
+  (janjiPeta ??= muatPeta().then(
+    (p) => {
+      peta = p;
+    },
+    () => {
+      $("#peta-besar").innerHTML = `<p class="gagal">Peta gagal dimuat. Muat ulang halaman.</p>`;
+    },
+  ));
+saatHampirTerlihat($("#peta-kecil"), () => void siapkanPeta().then(gambarSekitar));
+saatHampirTerlihat($("#peta-besar"), () => void siapkanPeta().then(gambarPeta));
