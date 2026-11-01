@@ -904,3 +904,13 @@ main,
     display: none;
   }
 }
+
+/* pesan tempat garis waktu sebelum digambar (tinggi tetap dari vis.ts: 678px, 574px bila lebar < 600px) */
+.garis-waktu:empty {
+  height: 678px;
+}
+@media (max-width: 631px) {
+  .garis-waktu:empty {
+    height: 574px;
+  }
+}

@@ -19,6 +19,8 @@
     <link rel="canonical" href="https://bara.raffstw.my.id/" />
     <meta name="theme-color" content="#1c1b1a" />
     <link rel="icon" href="/ikon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/node_modules/@fontsource/public-sans/files/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <header class="kepala">
@@ -37,9 +39,9 @@
           Itu letusan yang tercatat pasti dari <span data-jumlah-gunung>73</span> gunung. Setiap baris di bawah ini satu gunung,
           berurutan menyusuri busur vulkanik dari Aceh sampai Halmahera. Setiap titik satu letusan; makin besar, makin dahsyat.
         </p>
-        <p class="kini" data-kini></p>
+        <p class="kini" data-kini><span class="denyut" aria-hidden="true"></span><span>Per 25 Maret 2026, <strong>7 gunung masih erupsi</strong>: Dukono (sejak 1933), Ibu (sejak 2008), Semeru (sejak 2019), Merapi (sejak 2020), Marapi (sejak 2023), Lewotolok (sejak 2025) dan Lewotobi (sejak 2026).</span></p>
         <div class="garis-waktu-bingkai">
-          <div class="legenda-ukuran" aria-hidden="true" data-legenda-ukuran></div>
+          <div class="legenda-ukuran" aria-hidden="true" data-legenda-ukuran><span>Ukuran = VEI</span><span><svg width="6.6" height="6.6"><circle class="titik" cx="3.3" cy="3.3" r="2.3"></circle></svg>2</span><span><svg width="10.8" height="10.8"><circle class="titik besar" cx="5.4" cy="5.4" r="4.4"></circle></svg>4</span><span><svg width="18.8" height="18.8"><circle class="titik besar" cx="9.4" cy="9.4" r="8.4"></circle></svg>6</span><span><svg width="6" height="6"><circle class="titik-ragu" cx="3" cy="3" r="1.8"></circle></svg>tidak diketahui</span><span><svg width="22" height="6"><line class="durasi berlanjut" x1="1" x2="21" y1="3" y2="3"></line></svg>lama letusan</span></div>
           <div class="garis-waktu" id="garis-waktu" role="img" aria-label="Garis waktu letusan gunung api Indonesia sejak 1500, satu baris per gunung, ukuran titik sesuai VEI."></div>
         </div>
       </section>
