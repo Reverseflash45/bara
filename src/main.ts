@@ -33,6 +33,7 @@ import {
   terbesar,
   terdekat,
 } from "./data";
+import { htmlTetangga } from "./tetangga";
 import { angka, esc, gambarGarisWaktu, gambarPetaBesar, gambarPetaKecil, gambarStrip, grafikAktif, jariVei, muatPeta, teksTerakhir, varKelas, type Peta } from "./vis";
 
 const $ = <T extends Element = HTMLElement>(s: string) => document.querySelector<T>(s)!;
@@ -110,7 +111,9 @@ function gambarSekitar() {
         <span class="rinci">${angka(Math.round(g.jarak))} km ke ${g.arah} · ${n ? `${angka(n)} letusan sejak ${TAHUN_AWAL}` : `tidak ada letusan sejak ${TAHUN_AWAL}`}${t ? ` · ${teksTerakhir(t)}` : ""}</span></span></li>`;
     })
     .join("");
+  $("[data-tetangga]").innerHTML = htmlTetangga(pilihan.id, pilihan.nama, "bara");
   if (peta) gambarPetaKecil($("#peta-kecil"), peta, pilihan, radius, dekat);
+
   $$<HTMLButtonElement>("[data-radius]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.radius) === radius)));
   masuk.value = pilihan.nama;
 }
